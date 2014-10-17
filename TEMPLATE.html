@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>SSSI Tas</title>
+
+    <link rel="stylesheet" href="//cdn.leafletjs.com/leaflet-0.7.3/leaflet.css">
+  </head> 
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+    }
+    html, body, #map {
+      height: 100%;
+    }
+  </style>
+
+  <body>
+    <div id="map"></div>
+    <script src="//cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <script>
+    var map = new L.Map('map', { center: new L.LatLng(-41.6995,146.5136), zoom: 8, attributionControl:true, zoomControl:false, minZoom:6});    
+
+    var LISTTopographic = new L.tileLayer("https://services.thelist.tas.gov.au/arcgis/rest/services/Basemaps/Topographic/ImageServer/tile/{z}/{y}/{x}", {
+      attribution: "Basemap &copy The LIST",
+      maxZoom: 20,
+      maxNativeZoom: 18
+    });
+    map.addLayer(LISTTopographic)
+
+
+    var mkr = L.marker([-42.85628,147.24766]).addTo(map).bindPopup("<h3>Glenorchy Mountain Bike Park</h3><a href=https://maps.google.com/maps?daddr=-42.8538,147.2513 target=&quot_blank&quot>Directions to here.</a>").addTo(map).openPopup();
+    </script>
+  </body>
+
+</html>
